@@ -1,3 +1,9 @@
+<<<<<<< HEAD
 = REACT TUTORIAL
 
 https://reactjs-tutorial-devsejong.c9users.io/
+=======
+# 리액트를 공부합니다.
+
+https://velopert.com/reactjs-tutorials 사이트를 참조하여 순차적으로 진행하고 있습니다.
+>>>>>>> 0e66634a1ff866abe77c254502dc7c050bc8de60
