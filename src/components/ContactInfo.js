@@ -1,9 +1,10 @@
-import React from 'react';
+import React from "react";
 
-export default class ContactInfo extends React.Component {
+export default class ContactInfo extends React.Component{
+    
     render(){
-        return (
+        return(
             <div>{this.props.contact.name} {this.props.contact.phone}</div>
-        )
+        );
     }
 }

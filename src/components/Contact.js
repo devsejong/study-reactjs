@@ -1,38 +1,45 @@
-import React from 'react';
-import ContactInfo from './ContactInfo';
+import React from "react";
+import ContactInfo from "./ContactInfo"
 
-export default class Contact extends React.Component{
+export default class Contact extends React.Component {
     constructor(props){
         super(props);
         this.state = {
-            contactData: [{
-                name: 'Abet',
-                phone: '010-0000-0001'
-            }, {
-                name: 'Betty',
-                phone: '010-0000-0002'
-            }, {
-                name: 'Charlie',
-                phone: '010-0000-0003'
-            }, {
-                name: 'David',
-                phone: '010-0000-0004'
-            }]
-        };
+            keywork : "",
+            contactData : [
+                {name : "test1", phone : 1234},
+                {name : "test2", phone : 1233},
+                {name : "test3", phone : 1232},
+                {name : "test4", phone : 1231}
+            ]
+        }
+        this.handleChange = this.handleChange.bind(this);
     }
     
-    render() {
-        const mapToComponent = (data)=>{
-            return data.map((contact,i)=>{
-                return (<ContactInfo contact={contact} key={i}/>);
+    handleChange(e){
+        this.setState({
+            keyword : e.target.value
+        });
+    }
+    
+    render(){
+        const dataToContact = (data)=>{
+            data.sort();
+            data = data.filter((item)=>{
+                return item.name.indexOf(this.state.keyword) > -1
+            });
+            
+            return data.map((item, i)=>{
+                return (<ContactInfo contact={item} key={i}/>);
             });
         }
         
         return (
             <div>
-                <h1>Contacts</h1>
-                <div>{mapToComponent(this.state.contactData)}</div>
+                <input name="keyword" placeholder="Search" value={this.state.keyword} onChange={this.handleChange}/>
+                
+                {dataToContact(this.state.contactData)}
             </div>
-        );
+        )
     }
 }
